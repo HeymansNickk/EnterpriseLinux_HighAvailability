@@ -1,9 +1,49 @@
 # site.yml
 ---
-- hosts: srv001
-  become: true
-  roles: []
+# install cockpit monitoring
+- hosts: all
+  tasks:
+    - name: install Cockpit
+      package:
+        name:
+          - cockpit
+          - cockpit-dashboard
+    - name: Ensure Cockpit is running
+      service:
+        name: cockpit.socket
+        state: started
+        enabled: true
+    - name: Allow traffic to Cockpit dashboard through the firewall
+      firewalld:
+        port: 9090/tcp
+        state: enabled
+        permanent: true
 
-- hosts: srv002
-  become: true
-  roles: []
+# web install & config
+- hosts: web
+  sudo: yes
+
+  tasks:
+
+  - name: install nginx
+    apt: name=nginx state=installed
+
+# lb install & config
+- hosts: lb
+  sudo: yes  
+
+  tasks:
+
+  - name: install haproxy
+    apt: pkg={{ item }} state=latest
+    with_items:
+    - haproxy
+
+  - name: enable haproxy
+    lineinfile: dest=/etc/default/haproxy regexp="^ENABLED" line="ENABLED=1"
+    notify: restart haproxy 
+
+  handlers:
+
+  - name: restart haproxy
+    service: name=haproxy state=restarted
