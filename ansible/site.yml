@@ -2,8 +2,15 @@
 ---
 # install cockpit monitoring
 - hosts: all
+  become: true
+  roles:
+    - bertvv.rh-base
+    - sepolicy
+    - bertvv.httpd
+#    - bertvv.wordpress
+#    - phpmyadmin
   tasks:
-    - name: install Cockpit
+    - name: Install Cockpit
       package:
         name:
           - cockpit
@@ -20,30 +27,30 @@
         permanent: true
 
 # web install & config
-- hosts: web
-  sudo: yes
+#- hosts: web
+#  become: yes
 
-  tasks:
+#  tasks:
 
-  - name: install nginx
-    apt: name=nginx state=installed
+#  - name: install nginx
+#    apt: name=nginx state=installed
 
 # lb install & config
-- hosts: lb
-  sudo: yes  
+#- hosts: lb
+#  become: yes  
 
-  tasks:
+#  tasks:
 
-  - name: install haproxy
-    apt: pkg={{ item }} state=latest
-    with_items:
-    - haproxy
+#  - name: install haproxy
+#    apt: pkg={{ item }} state=latest
+#    with_items:
+#    - haproxy
 
-  - name: enable haproxy
-    lineinfile: dest=/etc/default/haproxy regexp="^ENABLED" line="ENABLED=1"
-    notify: restart haproxy 
+#  - name: enable haproxy
+#    lineinfile: dest=/etc/default/haproxy regexp="^ENABLED" line="ENABLED=1"
+#    notify: restart haproxy 
 
-  handlers:
+#  handlers:
 
-  - name: restart haproxy
-    service: name=haproxy state=restarted
+#  - name: restart haproxy
+#    service: name=haproxy state=restarted

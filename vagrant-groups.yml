@@ -3,19 +3,19 @@
 # This should be a dictionary with group names as keys and a list of hosts that
 # are members of the group as values. E.g.
 #
-db:
-  - db
+#db:
+#  - db
 
 lb:
   - lb
 
 web:
   - web1
-  - web2
-  - web3
-  - web4
-  - web5
-  - web6
+#  - web2
+#  - web3
+#  - web4
+#  - web5
+#  - web6
 #
 # Leave the file empty if you do not want to define groups.
 ---
