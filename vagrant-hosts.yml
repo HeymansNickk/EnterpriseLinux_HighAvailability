@@ -25,13 +25,15 @@
 #
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
-#- name: lb
-#  ip: 192.168.69.10
-#  memory: 512
+- name: lb
+  ip: 192.168.69.10
+#   memory: 512
+
+- name: database
+  ip: 192.168.69.17
 
 - name: web1
   ip: 192.168.69.11
-  memory: 512
 
 #- name: web2
 #  ip: 192.168.69.12
@@ -48,8 +50,6 @@
 #- name: web6
 #  ip: 192.168.69.16
 
-#- name: db
-#  ip: 192.168.69.17
 
 # Example of a more elaborate host definition
 # - name: srv002

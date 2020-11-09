@@ -1,0 +1,16 @@
+---
+rhbase_firewall_allow_services: 
+  - mysql
+
+mariadb_bind_address: '192.168.69.17'
+
+mariadb_root_password: 'root'
+
+mariadb_users:
+  - name: wordpress
+    password: wordpress
+    priv: 'wordpress.*:ALL'
+    host: '192.168.69.%'
+
+mariadb_databases:
+  - name: wordpress

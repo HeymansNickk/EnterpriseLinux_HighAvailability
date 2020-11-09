@@ -1,14 +1,21 @@
 # site.yml
 ---
-# install cockpit monitoring
-- hosts: all
+- hosts: webservers
   become: true
   roles:
     - bertvv.rh-base
-    - sepolicy
-    - bertvv.httpd
-#    - bertvv.wordpress
-#    - phpmyadmin
+    - wordpress-change
+
+
+- hosts: database
+  become: true
+  roles:
+    - bertvv.rh-base
+    - bertvv-mariadb
+
+# install cockpit monitoring
+- hosts: all
+  become: true
   tasks:
     - name: Install Cockpit
       package:
@@ -25,6 +32,8 @@
         port: 9090/tcp
         state: enabled
         permanent: true
+
+
 
 # web install & config
 #- hosts: web

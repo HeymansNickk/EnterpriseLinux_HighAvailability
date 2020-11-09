@@ -1,0 +1,33 @@
+# roles/wordpress/vars/main.yml
+---
+
+wordpress_repository:
+  - epel-release
+
+wordpress_packages:
+  - nginx
+  - php
+  - php-cli 
+  - php-xml
+  - php-curl
+  - php-zip
+  - php-mbstring
+  - php-mysqlnd
+  - php-pecl-json
+  - php-bcmath
+  - php-gd
+  - php-fpm
+  - unzip       # for installing plugins
+
+wordpress_directory: '/var/www/wordpress'
+
+wordpress_nginx_configuration: '/etc/nginx/conf.d/wordpress.conf'
+wordpress_configuration: '/var/www/wordpress/wp-config.php'
+wordpress_url: 'http://wordpress.org/latest.tar.gz'
+
+wordpress_plugin_directory: "{{ wordpress_directory }}/wp-content/plugins"
+wordpress_theme_directory: "{{ wordpress_directory }}/wp-content/themes"
+
+wordpress_nginx_service: '/usr/lib/systemd/system/nginx.service'
+
+wordpress_php_configuration: '/etc/php-fpm.d/www.conf'

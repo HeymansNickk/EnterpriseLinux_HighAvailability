@@ -1,0 +1,43 @@
+# roles/wordpress/tasks/install.yml
+---
+
+- name: Ensure repository is installed
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ wordpress_repository }}"
+  tags: wordpress
+
+- name: Ensure Wordpress packages are installed
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ wordpress_packages }}"
+  tags: wordpress
+
+- name: Start php-fpm
+  systemd:
+    name: php-fpm
+    state: started
+    enabled: true
+  tags: php-fpm
+
+- name: Check whether Nginx is already installed
+  stat:
+    path: "{{ wordpress_nginx_service }}"
+  register: wordpress_nginx_status
+  failed_when: not wordpress_nginx_status.stat.exists
+  tags: wordpress
+
+- name: Create /var/www
+  file:
+    path: /var/www
+    state: directory
+
+- name: Unarchive wordpress
+  unarchive:
+    src: http://wordpress.org/latest.tar.gz
+    dest: /var/www/
+    remote_src: yes
+
+  #needs modification

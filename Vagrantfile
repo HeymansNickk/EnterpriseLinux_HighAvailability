@@ -28,27 +28,13 @@ VAGRANTFILE_API_VERSION = '2'
 PROJECT_NAME = '/' + File.basename(Dir.getwd)
 
 # set custom vagrant-hosts file
-vagranthosts = ENV['VAGRANTS_HOST'] ? ENV['VAGRANTS_HOST'] : 'vagrant-hosts.yml'
-hosts = YAML.load_file(File.join(__dir__, vagranthosts))
+vagrant_hosts = ENV['VAGRANT_HOSTS'] ? ENV['VAGRANT_HOSTS'] : 'vagrant-hosts.yml'
+hosts = YAML.load_file(File.join(__dir__, vagrant_hosts))
+
+vagrant_groups = ENV['VAGRANT_GROUPS'] ? ENV['VAGRANT_GROUPS'] : 'vagrant-groups.yml'
+groups = YAML.load_file(File.join(__dir__, vagrant_groups))
 
 # {{{ Helper functions
-
-def provision_ansible(config, host)
-  if run_locally?
-    ansible_mode = 'ansible_local'
-  else
-    ansible_mode = 'ansible'
-  end
-  
-  # Provisioning configuration for Ansible (for Mac/Linux hosts).
-  config.vm.provision ansible_mode do |ansible|
-    ansible.playbook = host.key?('playbook') ?
-        "ansible/#{host['playbook']}" :
-        "ansible/site.yml"
-    ansible.become = true
-    ansible.compatibility_mode = '2.0'
-  end
-end
 
 def run_locally?
   windows_host? || FORCE_LOCAL_RUN
@@ -130,10 +116,24 @@ def forwarded_ports(vm, host)
   end
 end
 
+def provision_ansible(node, host, groups)
+  ansible_mode = run_locally? ? 'ansible_local' : 'ansible'
+  node.vm.provision ansible_mode do |ansible|
+    ansible.compatibility_mode = '2.0'
+    if ! groups.nil?
+      ansible.groups = groups
+    end
+    ansible.playbook = host.key?('playbook') ?
+        "ansible/#{host['playbook']}" :
+        "ansible/site.yml"
+    ansible.become = true
+  end
+end
+
 # }}}
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.ssh.insert_key = false
+  
   hosts.each do |host|
     config.vm.define host['name'] do |node|
       node.vm.box = host['box'] ||= DEFAULT_BASE_BOX
@@ -145,15 +145,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       shell_provisioners_always(node.vm, host)
       forwarded_ports(node.vm, host)
 
-      # Add VM to a VirtualBox group
       node.vm.provider :virtualbox do |vb|
+        vb.memory = host['memory'] if host.key? 'memory'
+        vb.cpus = host['cpus'] if host.key? 'cpus'
+
+        # Add VM to a VirtualBox group
         # WARNING: if the name of the current directory is the same as the
         # host name, this will fail.
         vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
       end
-      
-      # Run Ansible playbook for the VM
-      provision_ansible(config, host)
+
+      # Ansible provisioning
+      provision_ansible(node, host, groups)
     end
   end
 end

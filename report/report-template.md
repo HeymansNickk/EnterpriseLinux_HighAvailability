@@ -1,7 +1,7 @@
 # Enterprise Linux Lab Report
 
-- Student name: 
-- Github repo: <https://github.com/HoGentTIN/elnx-USER.git>
+- Student name: Heymans Nick
+- Github repo: <https://github.com/HeymansNickk>
 
 Describe the goals of the current iteration in a short sentence.
 

@@ -1,0 +1,28 @@
+---
+rhbase_repositories:
+  - epel-release
+
+rhbase_install_packages:
+  - bash-completion
+  - policycoreutils
+  - setroubleshoot-server
+  - tree
+  - vim-enhanced
+  - tcpdump
+
+rhbase_firewall_allow_services:
+  - http
+  - https
+
+rhbase_selinux_booleans:
+  - httpd_can_network_connect
+  - httpd_can_network_connect_db
+  - mysql_connect_http
+
+wordpress_database_host: '192.168.69.17'
+
+
+#bertvv.httpd
+#wordpress_database: wordpress
+#wordpress_user: wordpressusr
+#wordpress_password: BulpashCod

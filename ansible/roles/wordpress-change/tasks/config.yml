@@ -1,0 +1,32 @@
+# roles/wordpress/tasks/config.yml
+# Configures Wordpress
+---
+
+- name: Nginx config file for Wordpress
+  template:
+    src: wordpress.conf
+    dest: "{{ wordpress_nginx_configuration }}"
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart nginx
+  tags: wordpress
+
+- name: Change ownership of wordpress file
+  command: 'chown -R nginx: /var/www/wordpress'
+
+#- name: Wordpress config file
+#  template:
+#    src: wp-config.php
+#    dest: "{{ wordpress_configuration }}"
+#    owner: root
+#    group: root
+#    mode: '0640'
+#  notify: restart nginx
+#  tags: wordpress
+
+- name: Php-fpm config files
+  copy: 
+    src: www.conf
+    dest: /etc/php-fpm.d/www.conf
+  notify: restart php-fpm
