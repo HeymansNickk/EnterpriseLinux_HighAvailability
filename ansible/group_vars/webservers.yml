@@ -9,6 +9,7 @@ rhbase_install_packages:
   - tree
   - vim-enhanced
   - tcpdump
+  - php
 
 rhbase_firewall_allow_services:
   - http
@@ -19,7 +20,9 @@ rhbase_selinux_booleans:
   - httpd_can_network_connect_db
   - mysql_connect_http
 
-wordpress_database_host: '192.168.69.17'
+
+
+#wordpress_database_host: '192.168.69.17'
 
 
 #bertvv.httpd

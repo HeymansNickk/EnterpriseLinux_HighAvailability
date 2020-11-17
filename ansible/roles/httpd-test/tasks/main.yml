@@ -1,0 +1,11 @@
+# roles/wordpress/tasks/main.yml
+---
+
+- name: Include distribution-specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+
+- name: Install httpd & php
+  include_tasks: install.yml
+
+- name: Configure httpd & php
+  include_tasks: config.yml

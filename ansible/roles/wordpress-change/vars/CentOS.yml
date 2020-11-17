@@ -17,6 +17,7 @@ wordpress_packages:
   - php-bcmath
   - php-gd
   - php-fpm
+  #- php-psql
   - unzip       # for installing plugins
 
 wordpress_directory: '/var/www/wordpress'

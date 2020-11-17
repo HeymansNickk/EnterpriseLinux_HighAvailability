@@ -1,0 +1,16 @@
+<html>
+   <head>
+      <title>Select a MariaDB Database</title>
+   </head>
+   <h1>This site was provided by 
+   <?php 
+      echo gethostname() . PHP_EOL;
+   ?>
+   </h1>
+   <body>
+      <form name="form1" method="get" action="search.php">
+          <input type="text" placeholder="type here" name="search" aria-label="Search" required>
+          <input type="submit" value="Search" name="submit">
+      </form>
+   </body>
+</html>

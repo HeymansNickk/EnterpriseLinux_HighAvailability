@@ -1,0 +1,19 @@
+# roles/wordpress/tasks/config.yml
+# Configures Wordpress
+---
+- name: httpd content files
+  copy: 
+    src: index.html
+    dest: /var/www/html
+
+- name: httpd content files
+  copy: 
+    src: search.php
+    dest: /var/www/html
+  notify: restart httpd
+
+- name: Set SE linux permission
+  command: 'setsebool -P httpd_can_network_connect_db 1'
+
+- name: Set SE linux permission
+  command: 'setsebool -P httpd_can_network_connect 1'

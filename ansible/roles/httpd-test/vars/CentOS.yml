@@ -1,0 +1,15 @@
+# roles/wordpress/vars/main.yml
+---
+httpd_packages:
+  - httpd
+  - php
+  - php-cli 
+  - php-xml
+  - php-curl
+  - php-zip
+  - php-mbstring
+  - php-mysqlnd
+  - php-pecl-json
+  - php-bcmath
+  - php-gd
+  - php-fpm

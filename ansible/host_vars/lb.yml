@@ -1,0 +1,10 @@
+---
+rhbase_firewall_allow_services:
+  - http
+  - https
+
+haproxy_backend_servers:
+  - name: web1
+    address: 192.168.69.11:80
+  - name: web2
+    address: 192.168.69.12:80
