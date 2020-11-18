@@ -14,7 +14,7 @@
         $dbhost = "192.168.69.17";
         $dbuser = "nick";
         $dbpass = "vagrant";
-        $db = "test";
+        $db = "HA";
         $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 
         if($conn->connect_error){
@@ -22,7 +22,7 @@
         }
         #echo "connection succesfull";
 
-        $query = "SELECT * FROM test WHERE naam = '".$search."'";
+        $query = "SELECT * FROM persoon WHERE naam = '".$search."'";
         $result = $conn->query($query) or die(mysql_error);
 
         if ($result->num_rows>0)

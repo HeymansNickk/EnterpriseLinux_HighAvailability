@@ -9,19 +9,6 @@
   become: true
   roles:
     - bertvv.mariadb
-  tasks:
-    - name: Population db
-      community.mysql.mysql_query:
-        login_host: 192.168.69.17
-        login_user: nick
-        login_password: vagrant
-        login_db: test
-        query:
-          - CREATE TABLE persoon (id INT NOT NULL, naam varchar(35) NOT NULL, leeftijd INT NOT NULL)
-          - INSERT INTO test.persoon (id, naam, leeftijd) values (3, 'nick', 21)
-          - INSERT INTO test.persoon (id, naam, leeftijd) values (3, 'lisa', 21)
-          - INSERT INTO test.persoon (id, naam, leeftijd) values (3, 'bob', 24)
-
 
 - hosts: lb
   become: true

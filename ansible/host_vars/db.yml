@@ -13,5 +13,6 @@ mariadb_users:
     host: '192.168.69.17'
 
 mariadb_databases:
-  - name: test
+  - name: HA
+    init_script: ../files/InitScript.sql
 
