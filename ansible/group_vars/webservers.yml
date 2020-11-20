@@ -3,13 +3,8 @@ rhbase_repositories:
   - epel-release
 
 rhbase_install_packages:
-  - bash-completion
-  - policycoreutils
-  - setroubleshoot-server
-  - tree
-  - vim-enhanced
-  - tcpdump
   - php
+
 
 rhbase_firewall_allow_services:
   - http

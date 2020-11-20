@@ -5,12 +5,15 @@ rhbase_repositories:
   - epel-release
 
 rhbase_install_packages:
+  - git
+  - tree
+  - wget
+  - tcpdump
+  - vim-enhanced
   - bash-completion
   - policycoreutils
   - setroubleshoot-server
-  - tree
-  - vim-enhanced
-  - tcpdump
+
 
 rhbase_firewall_allow_services:
   - http
