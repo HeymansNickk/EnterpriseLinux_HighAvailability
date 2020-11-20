@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php 
+        $button = $_GET ['submit'];
         $search = $_GET ['search'];
         echo gethostname() . PHP_EOL;
         #echo $search;
