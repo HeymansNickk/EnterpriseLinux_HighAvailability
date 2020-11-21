@@ -7,9 +7,9 @@ mariadb_bind_address: '192.168.69.17'
 mariadb_root_password: 'root'
 
 mariadb_users:
-  - name: nick
-    password: vagrant
-    priv: 'wordpress.*:ALL'
+  - name: test
+    password: test
+    priv: 'test.*:ALL'
     host: '192.168.69.17'
 
 mariadb_databases:

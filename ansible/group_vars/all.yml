@@ -17,7 +17,7 @@ rhbase_install_packages:
   - setroubleshoot-server
   
 rhbase_start_services:
-  - cockpit.socket
+  - cockpit
 
 rhbase_firewall_allow_services:
   - http
