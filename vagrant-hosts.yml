@@ -25,6 +25,10 @@
 #
 # [1] http://docs.vagrantup.com/v2/synced-folders/basic_usage.html
 ---
+- name: monitor
+  ip: 192.168.69.9
+  memory: 512
+  
 - name: lb
   ip: 192.168.69.10
   memory: 2048

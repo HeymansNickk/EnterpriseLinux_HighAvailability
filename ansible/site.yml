@@ -15,23 +15,10 @@
   roles:
     - geerlingguy.haproxy
 
+- hosts: monitor
+  become: true
+
 - hosts: all
   become: true
   roles:
     - bertvv.rh-base
-  tasks:
-    - name: Install Cockpit
-      package:
-        name:
-          - cockpit
-          - cockpit-dashboard
-    - name: Ensure Cockpit is running
-      service:
-        name: cockpit.socket
-        state: started
-        enabled: true
-    - name: Allow traffic to Cockpit dashboard through the firewall
-      firewalld:
-        port: 9090/tcp
-        state: enabled
-        permanent: true
