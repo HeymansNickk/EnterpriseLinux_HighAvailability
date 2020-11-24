@@ -17,8 +17,24 @@
 
 - hosts: monitor
   become: true
+  tasks:
+  - name: set cockpit machines
+    copy:
+      src: ./files/05-mymachine.json 
+      dest: /etc/cockpit/machines.d/
 
 - hosts: all
   become: true
   roles:
     - bertvv.rh-base
+  tasks:  
+  - name: install Cockpit
+    package:
+      name:
+        - cockpit
+        - cockpit-dashboard
+  - name: Ensure Cockpit is running
+    service:
+      name: cockpit.socket
+      state: started
+      enabled: true

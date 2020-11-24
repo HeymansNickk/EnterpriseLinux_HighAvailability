@@ -8,17 +8,12 @@ rhbase_install_packages:
   - git
   - tree
   - wget
-  - cockpit
   - tcpdump
   - vim-enhanced
   - bash-completion
   - policycoreutils
-  - cockpit-dashboard
   - setroubleshoot-server
   
-rhbase_start_services:
-  - cockpit
-
 rhbase_firewall_allow_services:
   - http
   - https

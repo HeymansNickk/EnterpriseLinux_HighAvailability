@@ -12,8 +12,8 @@
     dest: /var/www/html
   notify: restart httpd
 
-- name: Set SE linux permission
+- name: Set SE linux permission httpd_can_network_connect_db
   command: 'setsebool -P httpd_can_network_connect_db 1'
 
-- name: Set SE linux permission
+- name: Set SE linux permission httpd_can_network_connect
   command: 'setsebool -P httpd_can_network_connect 1'
