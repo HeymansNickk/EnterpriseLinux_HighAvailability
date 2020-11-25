@@ -40,3 +40,21 @@ Use this file to write down the most important commands you encounter, so you ca
 | Alle gegevens van een table opvragen | `SELECT * FROM` _naam van de table_ ; |
 | Table verwijderen | `DROP TABLE` _naam van de table_ ; |
 | Database verwijderen | `DROP DATABASE` _naam van de database_; |
+
+
+## SElinux commands
+
+| Taak                       | Commando |
+| :---                       | :---     |
+| Status bekijken (gedetailleerd)               | `sestatus`     |
+| Status bekijken (kort)                    | `getenforce`   |
+| Tijdelijk aanzetten (enforcing)              | `setenforce 1` |
+| Tijdelijk uitzetten (permissive) | `setenforce 0` |
+| Alle booleans opvragen    | `getsebool -a`                    |
+| Alle booleans die aan een bepaald patroon voldoen opvragen    | `getsebool -a | grep PATTERN` |
+| Boolean tijdelijk uitzetten | `setsebool BOOLEAN 0`         |
+| Boolean tijdelijk aanzetten | `setsebool BOOLEAN 1`         |
+| Boolean permanent aanzetten    | `setsebool -P BOOLEAN 1`      |
+| Boolean permanent uitzetten    | `setsebool -P BOOLEAN 0`      |
+
+
