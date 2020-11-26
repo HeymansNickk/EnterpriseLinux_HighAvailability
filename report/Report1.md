@@ -67,8 +67,8 @@ Eerste itteratie: Opzetten van webserver met nginx en wordpress
 - https://github.com/bertvv/ansible-skeleton
 - https://github.com/bertvv/ansible-role-rh-base
 - https://github.com/dotless-de/vagrant-vbguest
-- https://www.youtube.com/playlist?list=PL2_OBreMn7FqZkvMYt6ATmgC0KAGGJNAN
 - https://sysadmincasts.com/episodes/43-19-minutes-with-ansible-part-1-4
+- https://www.youtube.com/playlist?list=PL2_OBreMn7FqZkvMYt6ATmgC0KAGGJNAN
 - https://sysadmincasts.com/episodes/45-learning-ansible-with-vagrant-part-2-4
 - https://sysadmincasts.com/episodes/46-configuration-management-with-ansible-part-3-4
 - https://sysadmincasts.com/episodes/47-zero-downtime-deployments-with-ansible-part-4-4

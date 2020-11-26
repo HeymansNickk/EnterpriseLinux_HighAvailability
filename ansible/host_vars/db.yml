@@ -4,15 +4,14 @@ rhbase_firewall_allow_services:
 
 mariadb_bind_address: '192.168.69.17'
 
-mariadb_root_password: 'root'
+mariadb_root_password: test
 
 mariadb_users:
   - name: test
     password: test
-    priv: 'test.*:ALL'
-    host: '192.168.69.17'
+    priv: '*.*:ALL,GRANT'
 
 mariadb_databases:
-  - name: HA
+  - name: test
     init_script: ../files/InitScript.sql
 
