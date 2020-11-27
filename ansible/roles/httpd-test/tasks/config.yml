@@ -3,7 +3,7 @@
 ---
 - name: httpd content files
   copy: 
-    src: index.html
+    src: index.php
     dest: /var/www/html
 
 - name: httpd content files

@@ -17,41 +17,29 @@
 
 - hosts: monitor
   become: true
-#  tasks:
-#  - name: set cockpit machines
-#    copy:
-#      src: ./files/05-mymachine.json 
-#      dest: /etc/cockpit/machines.d/
-  roles:
-#     - role: robertdebock.bootstrap
-#    - role: robertdebock.selinux
-#    - role: robertdebock.container_docs
-    - role: robertdebock.mysql
-      mysql_databases:
-        - name: zabbix
-          encoding: utf8
-          collation: utf8_bin
-      mysql_users:
-        - name: zabbix
-          password: zabbix
-          priv: "zabbix.*:ALL"
-    - role: robertdebock.zabbix_repository
-    - role: robertdebock.core_dependencies
-    - role: robertdebock.zabbix_server
-    - role: robertdebock.zabbix_web
+  tasks:
+  - name: set cockpit machines
+    copy:
+      src: ./files/05-mymachine.json 
+      dest: /etc/cockpit/machines.d/
 
 - hosts: all
   become: true
   roles:
     - bertvv.rh-base
-  tasks:  
-  - name: install Cockpit
-    package:
-      name:
-        - cockpit
-        - cockpit-dashboard
-  - name: Ensure Cockpit is running
-    service:
-      name: cockpit.socket
-      state: started
-      enabled: true
+  tasks:
+    - name: install Cockpit
+      package:
+        name:
+          - cockpit
+          - cockpit-dashboard
+    - name: Ensure Cockpit is running
+      service:
+        name: cockpit.socket
+        state: started
+        enabled: true
+    - name: Allow traffic to Cockpit dashboard through the firewall
+      firewalld:
+        port: 9090/tcp
+        state: enabled
+        permanent: true

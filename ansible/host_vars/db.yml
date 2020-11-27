@@ -9,7 +9,7 @@ mariadb_root_password: test
 mariadb_users:
   - name: test
     password: test
-    priv: '*.*:ALL,GRANT'
+    priv: 'test.*:ALL,GRANT'
 
 mariadb_databases:
   - name: test
