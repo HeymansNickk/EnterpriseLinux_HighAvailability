@@ -8,3 +8,11 @@ haproxy_backend_servers:
     address: 192.168.69.11:80
   - name: web2
     address: 192.168.69.12:80
+  - name: web3
+    address: 192.168.69.13:80
+  - name: web4
+    address: 192.168.69.14:80
+  - name: web5
+    address: 192.168.69.15:80
+  - name: web6
+    address: 192.168.69.16:80

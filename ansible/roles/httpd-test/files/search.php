@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+<style>
+body{ color:white; text-align:center; padding-top:20%; font-family: Arial, Helvetica,$
+</style>
+
     <?php 
         $button = $_GET ['submit'];
         $search = $_GET ['search'];
@@ -13,8 +17,8 @@
         #echo $search;
         #echo $button;
         $dbhost = "192.168.69.17";
-        $dbuser = "test";
-        $dbpass = "test";
+        $dbuser = "nick";
+        $dbpass = "itsasekrit";
         $db = "test";
         $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 
@@ -23,18 +27,36 @@
         }
         #echo "connection succesfull";
 
-        $query = "SELECT * FROM test WHERE naam = '".$search."'";
+        $query = "SELECT * FROM test WHERE naam LIKE '%".$search."%'";
         $result = $conn->query($query) or die(mysql_error);
 
         if ($result->num_rows>0)
         {
+            $rowcount=mysqli_num_rows($result);
+            printf("<br>%d users were found.\n",$rowcount);
+            echo "
+                <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Firstname</th>
+                    <th>Age</th>
+                </tr>
+                </table>";
             while($row = $result->fetch_assoc())
             {
-                echo "id: " . $row["id"]. " - Name: " . $row["naam"]. " " . $row["leeftijd"]. "<br>";
+                echo "
+                <table>
+                <tr>
+                        <td>" . $row["id"]. "</td>
+                         <td>" . $row["naam"]. "</td>
+                         <td>" . $row["leeftijd"]. "</td>
+                </tr>
+                </table>";
             }
         } else {
             echo "0 results";
         }
+
 
         mysqli_close($con)
     ?>

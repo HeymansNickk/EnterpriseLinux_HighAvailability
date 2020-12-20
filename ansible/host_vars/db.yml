@@ -7,9 +7,11 @@ mariadb_bind_address: '192.168.69.17'
 mariadb_root_password: test
 
 mariadb_users:
-  - name: test
-    password: test
-    priv: 'test.*:ALL,GRANT'
+  - name: nick
+    password: itsasekrit
+    priv: 'test.*:ALL'
+    append_privs: 'yes'
+    host: '192.168.69.%'
 
 mariadb_databases:
   - name: test

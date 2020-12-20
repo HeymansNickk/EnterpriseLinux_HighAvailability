@@ -20,10 +20,10 @@ Eerste itteratie: Opzetten van webserver met nginx en wordpress
 
 ### Nginx en wordpress
 1. via systemctl
-- ssh naar terminal web1
+- ssh naar web1
 - run commando `systemctl status nginx`
 - als service ngnix op "Active: active (running)" staat is de eerste test geslaagd
-2. via de webpagina
+1. via de webpagina
 - open browser en surf naar 192.168.69.10/
 - als de webpagina beschikbaar is, is de test geslaagd
 
