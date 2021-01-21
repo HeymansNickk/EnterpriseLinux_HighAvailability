@@ -1,1 +1,43 @@
 ---
+rhbase_firewall_allow_ports: 
+  # - 9101/tcp
+  - 3000/tcp
+  
+prometheus_global:
+  scrape_interval: 1s
+
+prometheus_targets:
+  node:  # This is a base file name. File is located in "{{ prometheus_config_dir }}/file_sd/<<BASENAME>>.yml"
+    - targets:              #
+        - 192.168.69.11:9100
+        - 192.168.69.12:9100
+        - 192.168.69.13:9100
+      labels:               #
+        env: Webservers    
+        job: node  
+    - targets:              #
+        - 192.168.69.10:9100
+      labels:               #
+        env: Loadbalancer    
+        job: node 
+    - targets:              #
+        - 192.168.69.17:9100
+      labels:               #
+        env: Database 
+        job: node 
+
+grafana_datasources:
+  - name: prometheus
+    type: prometheus
+    access: proxy
+    url: 'http://192.168.69.9:9090/'
+    basicAuth: false
+
+grafana_security:
+  admin_user: admin
+  admin_password: admin
+
+grafana_dashboards:
+  - dashboard_id: 1860
+    revision_id: 21
+    datasource: prometheus
