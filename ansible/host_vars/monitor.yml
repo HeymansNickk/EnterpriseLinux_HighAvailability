@@ -4,7 +4,9 @@ rhbase_firewall_allow_ports:
   - 3000/tcp
   
 prometheus_global:
-  scrape_interval: 1s
+  scrape_interval: 5s
+  scrape_timeout: 5s
+  evaluation_interval: 60s 
 
 prometheus_targets:
   node:  # This is a base file name. File is located in "{{ prometheus_config_dir }}/file_sd/<<BASENAME>>.yml"
@@ -38,6 +40,9 @@ grafana_security:
   admin_password: admin
 
 grafana_dashboards:
+  - dashboard_id: 10180
+    revision_id: 1
+    datasource: prometheus
   - dashboard_id: 1860
     revision_id: 21
     datasource: prometheus

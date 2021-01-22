@@ -1,7 +1,7 @@
 <html>
    <head>
       <title>Searching in the database</title>
-      
+      <?php header("Cache-Control: private, max-age=3600");?>
    </head>
 
    <body>

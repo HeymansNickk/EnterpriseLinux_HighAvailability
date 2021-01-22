@@ -82,4 +82,6 @@ mariadb_databases:
 
 ## Resources
 
-List all sources of useful information that you encountered while completing this assignment: books, manuals, HOWTO's, blog posts, etc.
+- https://github.com/geerlingguy/ansible-role-haproxy
+- https://www.haproxy.org/#docs
+- https://github.com/bertvv/ansible-role-mariadb
