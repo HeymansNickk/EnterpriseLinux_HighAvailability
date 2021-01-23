@@ -1,0 +1,2 @@
+rhbase_install_packages:
+  - siege

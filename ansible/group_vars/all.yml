@@ -8,6 +8,7 @@ rhbase_install_packages:
   - git
   - tree
   - vim
+  - htop
   - wget
   - tcpdump
   - vim-enhanced
