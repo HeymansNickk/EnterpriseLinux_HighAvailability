@@ -6,15 +6,6 @@ rhbase_install_packages:
 rhbase_firewall_allow_services:
   - http
   - https
-  - git
-  - tree
-  - vim
-  - wget
-  - tcpdump
-  - vim-enhanced
-  - bash-completion
-  - policycoreutils
-  - setroubleshoot-server
 
 rhbase_selinux_booleans:
   - httpd_can_network_connect

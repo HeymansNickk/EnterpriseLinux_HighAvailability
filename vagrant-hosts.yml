@@ -31,7 +31,7 @@
   
 - name: lb
   ip: 192.168.69.10
-  memory: 2048
+  memory: 4096
 
 - name: db
   ip: 192.168.69.17
@@ -39,18 +39,18 @@
 
 - name: web1
   ip: 192.168.69.11
-  memory: 1024
+  memory: 2048
 
 - name: web2
   ip: 192.168.69.12
-  memory: 1024
+  memory: 2048
 
 - name: web3
   ip: 192.168.69.13
-  memory: 1024
+  memory: 2048
   
-#- name: web4
-#  ip: 192.168.69.14
+- name: test
+  ip: 192.168.69.14
 
 #- name: web5
 #  ip: 192.168.69.15

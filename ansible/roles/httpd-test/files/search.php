@@ -7,7 +7,23 @@
 </head>
 <body>
 <style>
-body{ color:white; text-align:center; padding-top:20%; font-family: Arial, Helvetica,$
+body{ 
+    color:white;
+    background-color:gray;
+    text-align:center;
+    padding-top:20%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+table, td, th {
+  border: 1px solid black;
+}
+table {
+  border-collapse: collapse;
+}
+td {
+  text-align: center;
+  padding-right:19px;
+}
 </style>
 
     <?php 
