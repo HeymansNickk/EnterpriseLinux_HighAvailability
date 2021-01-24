@@ -6,6 +6,7 @@ rhbase_install_packages:
 rhbase_firewall_allow_services:
   - http
   - https
+  - mysql
 
 rhbase_selinux_booleans:
   - httpd_can_network_connect

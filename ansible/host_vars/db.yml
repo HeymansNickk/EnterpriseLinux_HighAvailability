@@ -2,6 +2,9 @@
 rhbase_firewall_allow_services: 
   - mysql
 
+rhbase_firewall_allow_ports: 
+  - 3306/tcp
+
 mariadb_bind_address: '192.168.69.17'
 
 mariadb_root_password: test

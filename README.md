@@ -1,7 +1,7 @@
 # Assignment Enterprise Linux: High Availability
 
-- Student: NAME
-- Repository: <https://github.com/HoGentTIN/elnx-ha-USER.git>
+- Student: Heymans Nick
+- Repository: <https://github.com/HoGentTIN/elnx-2021-ha-HeymansNickk>
 
 The goal of this assignment is to set up a proof-of-concept for the infrastructure of a large website in a virtualized environment using the [Ansible](https://ansible.com/) Ansible configuration management system. When you're finished, you should be able to recreate the entire infrastructure *from scratch* using a minimum of manual interventions, ideally a single command (`vagrant up`).
 

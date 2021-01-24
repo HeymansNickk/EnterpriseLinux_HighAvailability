@@ -35,7 +35,13 @@
   become: true
   roles:
     - bertvv.rh-base
-    
+    - nbigot.fail2ban
+  # tasks:
+  #   - name: line insert
+  #     lineinfile:
+  #       path: /etc/fail2ban/jail.local
+  #       line: 'enabled = true'
+  #       insertbefore: EOF
   #tasks:
   #  - name: install Cockpit
   #    package:

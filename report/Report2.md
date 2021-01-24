@@ -62,23 +62,34 @@ mariadb_databases:
 ## Test report
 
 ### Webserver
+
 1. via systemctl
+
 ![image van de service](https://i.imgur.com/iQmDFmG.png) 
+
 2. via de webpagina
+
 ![image van de pagina](https://i.imgur.com/AJOclP4.png) 
 
 ### db
+
 1. via systemctl
+
 ![image van de service](https://i.imgur.com/3ABZM6v.png) 
+
 ![image van de databases](https://i.imgur.com/5YIHzyV.png) 
+
 ![image van de database tables](https://i.imgur.com/MGg4nTt.png) 
+
 ![image van de inhoud van de table test](https://i.imgur.com/8ijefJw.png) 
 
 ### Loadbalancer
-1. via de webpagina
-![image van de pagina](https://i.imgur.com/kT4OE6T.png) 
-![image van de andere browser](https://i.imgur.com/xSazZsL.png) 
 
+1. via de webpagina
+
+![image van de pagina](https://i.imgur.com/kT4OE6T.png) 
+
+![image van de andere browser](https://i.imgur.com/xSazZsL.png) 
 
 ## Resources
 

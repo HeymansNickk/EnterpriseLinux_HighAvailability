@@ -1,6 +1,5 @@
 ---
 rhbase_firewall_allow_ports: 
-  # - 9101/tcp
   - 3000/tcp
   
 prometheus_global:
@@ -14,6 +13,9 @@ prometheus_targets:
         - 192.168.69.11:9100
         - 192.168.69.12:9100
         - 192.168.69.13:9100
+        - 192.168.69.14:9100
+        - 192.168.69.15:9100
+        - 192.168.69.16:9100
       labels:               #
         env: Webservers    
         job: node  
